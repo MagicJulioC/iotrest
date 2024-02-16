@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+
 class ExampleController extends Controller
 {
     /**
@@ -9,10 +11,11 @@ class ExampleController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function index()
     {
-        //
+        return User::all();
     }
-
-    //
+    public function show($id){
+        return user::find($id);
+    }
 }
