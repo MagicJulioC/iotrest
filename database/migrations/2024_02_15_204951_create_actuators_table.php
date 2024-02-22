@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('actuators', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->integer("value");
+            $table->string("name");//nombre del sensor
+            $table->string("type");//tipo de sensor
+            $table->decimal("value",8,2);//valor del sensor
+            $table->datetime("date");//fecha y hora de lectura
+            $table->integer("user_id");//usuario que realizo la lectura
             $table->timestamps();
         });
     }

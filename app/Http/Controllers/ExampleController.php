@@ -16,6 +16,6 @@ class ExampleController extends Controller
         return User::all();
     }
     public function show($id){
-        return user::find($id);
+        return User::find($id);
     }
 }

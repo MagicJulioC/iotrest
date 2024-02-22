@@ -13,7 +13,7 @@ class Sensor extends Model
      * @var string[]
      */
     protected $fillable = [
-        'value','type','date','username'
+        'id','name','type','value','date','user_id'
     ];
 
     /**
