@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Http\Controllers;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Firebase\JWT\JWT;
+
+use function Laravel\Prompts\password;
+
+class AuthController extends Controller
+{
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function login(Request $request){
+        $user = User::where('username', $request->username)->first();
+        if(!$user)return response('', 404);
+        if(!password_verify($request->password,$user->password)) return response ('', 404);
+        $payload = [
+            'sub' => $user->id,
+            'iat' => time(),
+            'exp' => time() + 60*60*24*30
+        ];
+        $jwt = JWT::encode($payload, env('JWT_SECRET'), 'HS256');
+        return $jwt;
+    }
+
+}

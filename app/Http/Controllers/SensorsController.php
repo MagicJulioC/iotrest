@@ -26,13 +26,15 @@ class SensorsController extends Controller
     public function store(Request $request){
         $this->validate($request,[
             'name' => 'required|unique:sensors',
-            'type' => '$required',
-            'value' => '$required',
-            'date' => '$required',
-            'user_id' => '$required'
+            'type' => 'required',
+            'value' => 'required',
+            'date' => 'required',
+            'user_id' => 'required'
         ]);
         $sensor = new Sensor();
         $sensor->fill($request->all());
+        $sensor->date =date("Y-a-d H-i-s");
+        $sensor->user_id = $request->user()->id;
         $sensor->save();
         return $sensor;
     }

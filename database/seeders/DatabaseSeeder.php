@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Actuator;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([UsersTableSeeder::class,SensorsTableSeeder::class]);
+        $this->call([UsersTableSeeder::class,SensorsTableSeeder::class,ActuatorsTableSeeder::class]);
     }
 }
